@@ -98,15 +98,6 @@ set pastetoggle=<F2> " toggle paste mode on F2
 set hlsearch " Подсвечивать поиск
 set is " Использовать последовательный поиск
 
-" Настройка табов и умных отступов 
-set tabstop     =8
-set shiftwidth  =8
-set softtabstop =8
-" set noexpandtab 
-set smarttab
-set expandtab 
-" set autoindent 
-set smartindent
 
 set nofoldenable 		" отклключить фолдинг по умолчанию
 
@@ -692,12 +683,39 @@ source $VIMRUNTIME/macros/justify.vim
 
 
 
-" Clang-format --------------------------------------------------------
+" Настройка табов и умных отступов 
+" ---------------------------------------------------------------------
+"linux kernel coding stype
+set tabstop=8  "number of spaces a <Tab> in the text stands for
+set shiftwidth=8 "number of spaces used for each step of (auto)indent
+set softtabstop=8  "if non-zero, number of spaces to insert for a <Tab>
+set noexpandtab
+set nosmarttab "a <Tab> in an indent inserts 'shiftwidth' spaces
+set textwidth=80
+set smarttab
+set smartindent
+" ---------------------------------------------------------------------
+
+" Clang-format 
+" ---------------------------------------------------------------------
+" [info]
+" https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+"
+" [проблема с форматированием структур, пока не решена]
+" https://github.com/rhysd/vim-clang-format/issues/59
+"
+" linux kernel coding style
+let g:clang_format#code_style='llvm'
 let g:clang_format#style_options = {
-            \ "AccessModifierOffset" : -4,
-            \ "AllowShortIfStatementsOnASingleLine" : "false",
-            \ "AlwaysBreakTemplateDeclarations" : "true",
-            \ "Standard" : "C++11"}
+            \ 'IndentWidth' : '8',
+            \ 'UseTab' : 'Always',
+            \ 'BreakBeforeBraces' : 'Linux',
+            \ 'AllowShortIfStatementsOnASingleLine': 'false',
+	    \ 'AllowShortBlocksOnASingleLine': 'false',
+	    \ 'AllowShortCaseLabelsOnASingleLine': 'false',
+	    \ 'AllowShortFunctionsOnASingleLine': 'None',
+	    \ 'AllowShortLoopsOnASingleLine': 'false',
+            \ 'IndentCaseLabels' : 'false'}
 
 " map to <Leader>cf in C++ code
 autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
