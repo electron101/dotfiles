@@ -75,6 +75,10 @@ Plug 'matveyt/vim-modest'
 Plug 'Rigellute/rigel'
 Plug 'ayu-theme/ayu-vim'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'endel/vim-github-colorscheme'
+Plug 'aonemd/kuroi.vim'
+Plug 'dim13/gocode.vim'
+Plug 'sonph/onehalf'
 " для переключения цветовых тем по F8
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-colorscheme-switcher'
@@ -492,7 +496,7 @@ endif
 " +-----------------------+------+----------------------------------------------+
 " |antares                |   8  |                                              |
 " +-----------------------+------+----------------------------------------------+
-" |ayu                    |   8  |                                              |
+" |ayu                    |   8  | 3 темы (тёмная, светлая и промежуточная)     |
 " +-----------------------+------+----------------------------------------------+
 " |badwolf                |   9  |                                              |
 " +-----------------------+------+----------------------------------------------+
