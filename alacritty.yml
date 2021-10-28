@@ -221,9 +221,9 @@ colors:
     foreground: '0x464b4f' # get from Manjaro konsole
     dim_foreground: '#828482'
     bright_foreground: '#eaeaea'
-  cursor:
-    text:   '0x5c6773'
-    cursor: '0xff6a00'
+  # cursor:
+    # text:   '0x5c6773'
+    # cursor: '0xff6a00'
   normal:
     black:   '0x000000'
     red:     '0xff3333'
@@ -434,7 +434,7 @@ cursor:
   # vi_mode_style: None
 
   # Cursor blinking interval in milliseconds.
-  blink_interval: 400
+  blink_interval: 480
 
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
