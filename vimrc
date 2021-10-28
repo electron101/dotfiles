@@ -83,6 +83,8 @@ Plug 'sonph/onehalf'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-colorscheme-switcher'
 
+Plug 'norcalli/nvim-colorizer.lua'          " Выделяет цвет по его коду
+
 " Language Servers for Vim
 " Plug 'prabirshrestha/async.vim'
 " Plug 'prabirshrestha/vim-lsp'
@@ -154,7 +156,7 @@ map <C-l> <C-w><Right>
 map <C-h> <C-w><Left>
 
 
-
+lua require'colorizer'.setup()
 
 " COLOR and so on -----------------------------------------------------
 " Enable true color 启用终端24位色
