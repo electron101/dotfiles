@@ -79,6 +79,7 @@ Plug 'endel/vim-github-colorscheme'
 Plug 'aonemd/kuroi.vim'
 Plug 'dim13/gocode.vim'
 Plug 'sonph/onehalf'
+Plug 'cormacrelf/vim-colors-github'
 " для переключения цветовых тем по F8
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-colorscheme-switcher'
@@ -156,7 +157,7 @@ map <C-l> <C-w><Right>
 map <C-h> <C-w><Left>
 
 
-lua require'colorizer'.setup()
+" lua require'colorizer'.setup()
 
 " COLOR and so on -----------------------------------------------------
 " Enable true color 启用终端24位色
@@ -547,12 +548,16 @@ set background=light
 " colorscheme jellyx
 " colorscheme dracula
 " colorscheme gruvbox
+
+" For github color scheme
 colorscheme github
+let g:github_colors_soft = 1
+
 " colorscheme PaperColor
 " colorscheme jaime
 """"
 " Ayu colorscheme
-" let ayucolor="light"  " for light version of theme
+let ayucolor="light"  " for light version of theme
 " let ayucolor="mirage" " for mirage version of theme
 " let ayucolor="dark"   " for dark version of theme
 " colorscheme ayu
