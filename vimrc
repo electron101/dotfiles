@@ -568,7 +568,8 @@ let ayucolor="light"  " for light version of theme
 
 " AirLine -------------------------------------------------------------
 " let g:airline_theme='angr'
-let g:airline_theme='badwolf'
+" let g:airline_theme='badwolf'
+let g:airline_theme='github'
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_splits = 1
