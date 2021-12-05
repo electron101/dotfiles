@@ -550,8 +550,10 @@ set background=light
 " colorscheme gruvbox
 
 " For github color scheme
-colorscheme github
+" use a slightly darker background, like GitHub inline code blocks
 let g:github_colors_soft = 1
+colorscheme github
+
 
 " colorscheme PaperColor
 " colorscheme jaime
