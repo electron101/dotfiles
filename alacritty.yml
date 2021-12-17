@@ -134,6 +134,8 @@ font:
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
     #family: monospace
+    # family: Cascadia Code
+    # family: Fira Code
     family: Menlo
     # family: Hack
 
@@ -147,6 +149,8 @@ font:
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
     #family: monospace
+    # family: Cascadia Code
+    # family: Fira Code
     family: Menlo
     # family: Hack
 
@@ -160,6 +164,8 @@ font:
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
     #family: monospace
+    # family: Cascadia Code
+    # family: Fira Code
     family: Menlo
     # family: Hack
 
