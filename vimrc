@@ -633,8 +633,8 @@ nmap <leader>+ <Plug>AirlineSelectNextTab
 
 
 " подстветка выхода за границы 80 символов
-highlight OverLength ctermbg=blue ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+" highlight OverLength ctermbg=blue ctermfg=white guibg=#592929
+highlight OverLength ctermbg=blue ctermfg=white guibg=#03aaf9
 " подстветка линии границы 80 символа
 " set colorcolumn=81
 
