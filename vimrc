@@ -82,7 +82,7 @@ Plug 'matveyt/vim-modest'
 Plug 'Rigellute/rigel'
 Plug 'ayu-theme/ayu-vim'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'endel/vim-github-colorscheme'
+" Plug 'endel/vim-github-colorscheme'
 Plug 'aonemd/kuroi.vim'
 Plug 'dim13/gocode.vim'
 Plug 'sonph/onehalf'
@@ -94,11 +94,11 @@ Plug 'xolox/vim-colorscheme-switcher'
 Plug 'norcalli/nvim-colorizer.lua'          " Выделяет цвет по его коду
 
 " Language Servers for Vim
-" Plug 'prabirshrestha/async.vim'
-" Plug 'prabirshrestha/vim-lsp'
-" Plug 'mattn/vim-lsp-settings'
-" Plug 'prabirshrestha/asyncomplete.vim'
-" Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 if has('nvim')
 	Plug 'neovim/nvim-lspconfig'
@@ -107,6 +107,10 @@ if has('nvim')
 	Plug 'saadparwaiz1/cmp_luasnip'
 	Plug 'L3MON4D3/LuaSnip'
 endif
+
+" Plug 'puremourning/vimspector'
+"
+Plug 'mfussenegger/nvim-dap'
 
 
 
@@ -651,6 +655,21 @@ nnoremap <S-Tab> <<_
 inoremap <S-Tab> <C-D>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
+
+
+
+" VIMSPECTR
+" let g:vimspector_enable_mappings = 'HUMAN'
+"
+" nmap <leader>vl :call vimspector#Launch()<CR>
+" nmap <leader>vr :VimspectorReset<CR>
+" nmap <leader>ve :VimspectorEval
+" nmap <leader>vw :VimspectorWatch
+" nmap <leader>vo :VimspectorShowOutput
+" nmap <leader>vi <Plug>VimspectorBalloonEval
+" xmap <leader>vi <Plug>VimspectorBalloonEval
+"
+" let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
  
 
 " Перевод строки в нормальном режиме по нажатию Ctrl+Enter
@@ -996,6 +1015,10 @@ cmp.setup {
 EOF
 
 
+
+
+" =========   Keybindings and completion ==========
+
 lua << EOF
 local nvim_lsp = require('lspconfig')
 
@@ -1004,6 +1027,10 @@ local nvim_lsp = require('lspconfig')
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  -- Add additional capabilities supported by nvim-cmp
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
   -- Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -1034,10 +1061,12 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'clangd' }
+-- Нужен и ccl и clnagd. Только в связке nvim подтягивает все поля структур и прочее
+local servers = { 'ccls', 'clangd' } 
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
+    capabilities = capabilities,
     flags = {
       debounce_text_changes = 150,
     }
@@ -1073,5 +1102,76 @@ EOF
 "         in vim, run :PlugInstall
 "     in vim, run :CocInstall coc-clangd
 "     Note: If you've configured clangd as a languageServer in coc-settings.json, you should remove it to avoid running clangd twice!
+
+nnoremap <silent> <F5> :lua require'dap'.continue()<CR>
+nnoremap <silent> <F10> :lua require'dap'.step_over()<CR>
+nnoremap <silent> <F11> :lua require'dap'.step_into()<CR>
+nnoremap <silent> <F12> :lua require'dap'.step_out()<CR>
+nnoremap <silent> <leader>b :lua require'dap'.toggle_breakpoint()<CR>
+nnoremap <silent> <leader>B :lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>
+nnoremap <silent> <leader>lp :lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>
+nnoremap <silent> <leader>dr :lua require'dap'.repl.open()<CR>
+nnoremap <silent> <leader>dl :lua require'dap'.run_last()<CR>
+
+
+
+lua << EOF
+local dap = require('dap')
+dap.adapters.lldb = {
+  type = 'executable',
+  command = '/usr/bin/lldb-vscode', -- adjust as needed
+  name = "lldb"
+}
+
+
+local dap = require('dap')
+dap.configurations.cpp = {
+  {
+    name = "Launch",
+    type = "lldb",
+    request = "launch",
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false,
+    args = {},
+
+    -- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:
+    --
+    --    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+    --
+    -- Otherwise you might get the following error:
+    --
+    --    Error on launch: Failed to attach to the target process
+    --
+    -- But you should be aware of the implications:
+    -- https://www.kernel.org/doc/html/latest/admin-guide/LSM/Yama.html
+    runInTerminal = false,
+  },
+}
+
+
+-- If you want to use this for rust and c, add something like this:
+
+dap.configurations.c = dap.configurations.cpp
+dap.configurations.rust = dap.configurations.cpp
+
+EOF
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
