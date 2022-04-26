@@ -87,6 +87,8 @@ Plug 'aonemd/kuroi.vim'
 Plug 'dim13/gocode.vim'
 Plug 'sonph/onehalf'
 Plug 'cormacrelf/vim-colors-github'
+Plug 'sainnhe/edge'
+
 " для переключения цветовых тем по F8
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-colorscheme-switcher'
@@ -562,7 +564,7 @@ set background=light
 
 " For github color scheme
 " use a slightly darker background, like GitHub inline code blocks
-let g:github_colors_soft = 1
+let g:github_colors_soft = 0
 colorscheme github
 
 
