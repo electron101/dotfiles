@@ -40,8 +40,19 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  --- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cf', '<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'v', '<leader>cf', '<ESC><cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
+
+  --- Что бы не вылезало это сообщение с выбором выбираем false
+  ---
+  --- Select a language server:
+  --- 1: clangd
+  --- 2: null-ls
+  --- Type number and <Enter> or click with the mouse (q or empty cancels):
+  ---
+  client.resolved_capabilities.document_formatting = false
+  client.resolved_capabilities.document_range_formatting = false
   
 
   --protocol.SymbolKind = { }
@@ -79,10 +90,15 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
 
+--- Пока не указал кодировку всё время вылазило это предупреждение
+--- warning: multiple different client offset_encodings detected for buffer, this is not supported yet
+--- https://www.reddit.com/r/neovim/comments/tul8pb/lsp_clangd_warning_multiple_different_client/
+capabilities.offsetEncoding = "utf-8" 
+
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'clangd', 'csharp_ls' }
+local servers = { 'clangd', 'csharp_ls', 'sumneko_lua' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
