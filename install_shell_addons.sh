@@ -23,4 +23,9 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 # === [ Vifm-colors ] ===
 git clone https://github.com/vifm/vifm-colors ~/.config/vifm/colors
 
+
+# === [Tmux Plugin Manager] ====
+if "test ! -d ~/.tmux/plugins/tpm" \
+   "run 'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && ~/.tmux/plugins/tpm/bin/install_plugins'"
+
 echo "[*] Done install shell addons"
