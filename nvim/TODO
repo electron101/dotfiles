@@ -1,0 +1,19 @@
+[1] 
+
+При открытии lua файлов возникает эта ошибка. 
+Spawning language server with cmd: `lua-language-server` failed. The language
+server is either not installed, missing from PATH, or not executable.
+
+Это из за того что сам сервер установлен через LspInstaller. И не умеет читать отностительные пути. Пока не добавишь путь к переменной PATH ошибка не проходит.
+
+export PATH=/home/nostromo/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/nostromo/.local/bin:/home/nostromo/.local:~/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/
+
+
+[2]
+
+ФОРМАТИРОВАНИЕ 
+
+С Null-ls сервером так и не подружились. Без него всё работает хорошо проверял на 
+lua, cs, clangd
+
+Возможно не стиот париться и работать как есть. 
