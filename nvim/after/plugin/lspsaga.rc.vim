@@ -84,10 +84,10 @@ nnoremap <silent> gp :Lspsaga preview_definition<CR>
 " Jump Diagnostic and Show Diagnostics
 " ----------------------------------------------------------------
 " show
-nnoremap <silent><leader>cd :Lspsaga show_line_diagnostics<CR>
+nnoremap <silent><leader>sd :Lspsaga show_line_diagnostics<CR>
 
 " only show diagnostic if cursor is over the area
-nnoremap <silent><leader>cc :Lspsaga show_cursor_diagnostics<CR>
+nnoremap <silent><leader>sc :Lspsaga show_cursor_diagnostics<CR>
 
 " jump diagnostic
 nnoremap <silent> [e :Lspsaga diagnostic_jump_next<CR>
