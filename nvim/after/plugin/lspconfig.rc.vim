@@ -40,19 +40,21 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  --- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cf', '<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cf', '<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>', opts)
+  --- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cf', '<cmd>lua vim.lsp.buf.formatting_sync()<CR>', opts)
+  --- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'v', '<leader>cf', '<ESC><cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
 
-  --- Что бы не вылезало это сообщение с выбором выбираем false
+  --- При использовании null-ls у буфера всегда 2 сервера и это напрягает 
+  --- Что бы не вылезало это сообщение с выбором устанавливаем false
   ---
   --- Select a language server:
   --- 1: clangd
   --- 2: null-ls
   --- Type number and <Enter> or click with the mouse (q or empty cancels):
   ---
-  client.resolved_capabilities.document_formatting = false
-  client.resolved_capabilities.document_range_formatting = false
+  client.resolved_capabilities.document_formatting = true
+  client.resolved_capabilities.document_range_formatting = true
   
 
   --protocol.SymbolKind = { }
