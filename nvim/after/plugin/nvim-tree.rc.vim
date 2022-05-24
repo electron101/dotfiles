@@ -105,9 +105,9 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
       custom_only = true,
       list = {
         -- user mappings go here
-	      { key = {"<CR>", "o", "<2-LeftMouse>"}, action = "edit" },
+	      { key = {"<CR>", "o", "<2-LeftMouse>"}, action = "edit_no_picker" },
 	      { key = "E",                            action = "edit_in_place" },
-	      { key = {"O"},                          action = "edit_no_picker" },
+	      { key = {"O"},                          action = "edit" },
 	      { key = {"<2-RightMouse>", "C"},        action = "cd" },
 	      { key = "v",                            action = "vsplit" },
 	      { key = "s",                            action = "split" },
