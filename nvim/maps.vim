@@ -11,3 +11,10 @@ map <C-k> <C-w>k
 map <C-j> <C-w>j
 map <C-l> <C-w>l
 map <C-h> <C-w>h
+
+" Disable higlighting search result on Esc key
+nnoremap <silent> <Esc> :nohlsearch<cr>
+
+" Перевод строки в нормальном режиме по нажатию Ctrl+Enter
+"map <C-m> i<CR><Esc>h
+" nnoremap <CR> o<ESC>
