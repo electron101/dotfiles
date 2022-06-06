@@ -46,8 +46,14 @@ Plug 'junegunn/vim-easy-align'                     " (выравнивание �
 Plug 'tpope/vim-surround'                          " Обрамитель в (кавычки,',[,{ и тд)
 
 " Плагины цветовых схем --------------------------
+Plug 'rafi/awesome-vim-colorschemes'               " Collection of awesome color schemes for Vim
+" ---------------------------------------
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-colorscheme-switcher'              " Colorscheme switcher plug 
+" ---------------------------------------
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'cormacrelf/vim-colors-github'
+Plug 'nanotech/jellybeans.vim'
 
 call plug#end()
 
