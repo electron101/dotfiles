@@ -1083,4 +1083,4 @@ colors:
     magenta: '#ffa3aa'
     cyan: '#7ff1cb'
     white: '#323232'
-theme: Ayu-Light
+theme: Ayu-Light.yml
