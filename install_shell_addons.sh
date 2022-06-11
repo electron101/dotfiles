@@ -53,4 +53,11 @@ else
 	git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm && $HOME/.tmux/plugins/tpm/bin/install_plugins
 fi
 
+# === [Alacritty-themes CLI] ===
+# пока не могу скопировать доступ запрещён, приходиться копировать вручную
+# if [ -d /usr/lib/node_modules/alacritty-themes/themes ]
+# then 
+# 	cp alacritty-themes/* /usr/lib/node_modules/alacritty-themes/themes/
+# fi
+
 echo "[*] Done install shell addons"
