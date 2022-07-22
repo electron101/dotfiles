@@ -19,3 +19,7 @@ nnoremap <silent> <Esc> :nohlsearch<cr>
 nnoremap <silent><A-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
 nnoremap <silent><A-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
+" Этот сценарий Vim определяет новую визуальную команду: "_j". Для выравнивания
+" текста по обоим краям, требуется выделить текст в Визуальном режиме и
+" выполнить команду "_j".  Подключаем макрос (идет в стандартной поставке):
+source $VIMRUNTIME/macros/justify.vim
