@@ -17,6 +17,8 @@ telescope.setup {
   }
 }
 
+require('telescope').load_extension('fzf')
+
 EOF
 
 " Find files using Telescope command-line sugar.
@@ -32,3 +34,5 @@ nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 " nnoremap <silent> ;b <cmd>lua require('telescope.builtin').file_browser()<cr>
+nnoremap <silent> ;b <cmd>lua require('telescope.builtin').treesitter()<cr>
+

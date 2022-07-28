@@ -38,6 +38,9 @@ if has("nvim")
   Plug 'p00f/nvim-ts-rainbow'                      " Радужные скобки [2]
   Plug 'nvim-lua/plenary.nvim'                     " Библиотека lua функий (для сопрограмм)
   Plug 'nvim-telescope/telescope.nvim'             " Нечеткий поиск по спискам 
+  Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' } " встроенный сортировщик 
+                                                   " телескопа, чтобы значительно повысить 
+                                                   " производительность сортировки.
 endif
 
 Plug 'tpope/vim-fugitive'                          " Работа с git
