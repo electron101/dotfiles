@@ -9,6 +9,7 @@ set noswapfile       " Не создавать swp файлы
 " отступы с текущей строки при добавлении новой плюс автоматически выставляет
 " отступы в «нужных» местах.
 " https://habr.com/ru/post/64224/
+" https://linuxhandbook.com/vim-indentation-tab-spaces/
 set tabstop=8
 set shiftwidth=8
 set smarttab
