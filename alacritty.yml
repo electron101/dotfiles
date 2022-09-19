@@ -116,13 +116,16 @@ font:
     #family: monospace
     # family: Anonymous Pro 
     # family: Operator Mono 
-    # family: Hack 
     # family: Cascadia Code
     # family: Victor Mono 
     # family: Consolas
     # family: Fira Code
-    family: Menlo
+    # family: Menlo
     # family: Hack
+    # family: MonoLisa
+    # family: Source Code Pro
+    family: JetBrains Mono
+    # family: IBM Plex Mono
     # The `style` can be specified to pick a specific face.
     style: Regular
 
@@ -135,13 +138,16 @@ font:
     #family: monospace
     # family: Anonymous Pro 
     # family: Operator Mono 
-    # family: Hack 
     # family: Cascadia Code
     # family: Victor Mono 
     # family: Consolas
     # family: Fira Code
-    family: Menlo
+    # family: Menlo
     # family: Hack
+    # family: MonoLisa
+    # family: Source Code Pro
+    family: JetBrains Mono
+    # family: IBM Plex Mono
     # The `style` can be specified to pick a specific face.
     style: Bold
 
@@ -154,13 +160,16 @@ font:
     #family: monospace
     # family: Anonymous Pro 
     # family: Operator Mono 
-    # family: Hack 
     # family: Cascadia Code
     # family: Victor Mono 
     # family: Consolas
     # family: Fira Code
-    family: Menlo
+    # family: Menlo
     # family: Hack
+    # family: MonoLisa
+    # family: Source Code Pro
+    family: JetBrains Mono
+    # family: IBM Plex Mono
     # The `style` can be specified to pick a specific face.
     style: Italic
 
@@ -173,13 +182,16 @@ font:
     #family: monospace
     # family: Anonymous Pro 
     # family: Operator Mono 
-    # family: Hack 
     # family: Cascadia Code
     # family: Victor Mono 
     # family: Consolas
     # family: Fira Code
-    family: Menlo
+    # family: Menlo
     # family: Hack
+    # family: MonoLisa
+    # family: Source Code Pro
+    family: JetBrains Mono
+    # family: IBM Plex Mono
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
 
@@ -191,7 +203,7 @@ font:
   # spacing.
   offset:
     x: 0
-    y: 1
+    y: 0
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the
@@ -1058,29 +1070,32 @@ key_bindings:
 colors:
   # Default colors
   primary:
-    background: '#fafafa'
-    foreground: '#464b4f'
-    # cursor:
-    # text:   '#5c6773'
-    # cursor: '#ff6a00'
+    background: '0xffffff'
+    foreground: '0x4d5566'
+
+  # Normal colors
   normal:
-    black: '#000000'
-    red: '#ff3333'
-    green: '#86b300'
-    yellow: '#f29718'
-    blue: '#41a6d9'
-    magenta: '#f07178'
-    cyan: '#4dbf99'
-    white: '#323232'
+    black: '0x24292e'
+    red: '0xd73a49'
+    green: '0x22863a'
+    yellow: '0xb08800'
+    blue: '0x0366d6'
+    magenta: '0x6f42c1'
+    cyan: '0x1b7c83'
+    white: '0x4d5566'
 
   # Bright colors
   bright:
-    black: '#323232'
-    red: '#ff6565'
-    green: '#b8e532'
-    yellow: '#ffc94a'
-    blue: '#73d8ff'
-    magenta: '#ffa3aa'
-    cyan: '#7ff1cb'
-    white: '#323232'
-theme: Ayu-Light.yml
+    black: '0x586069'
+    red: '0xcb2431'
+    green: '0x28a745'
+    yellow: '0xdbab09'
+    blue: '0x2188ff'
+    magenta: '0x8a63d2'
+    cyan: '0x1b7c83'
+    white: '0x4d5566'
+
+  indexed_colors:
+    - { index: 16, color: '0xd18616' }
+    - { index: 17, color: '0xcb2431' }
+theme: github_light_default
