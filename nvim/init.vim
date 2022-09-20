@@ -43,6 +43,7 @@ runtime ./maps.vim
 " ---------------------------------------------------------------------
 if exists("&termguicolors") && exists("&winblend")
 	set termguicolors
+	let g:gruvbox_bold = 0
 	colorscheme gruvbox
 	set background=light
 	let g:github_colors_soft = 0
