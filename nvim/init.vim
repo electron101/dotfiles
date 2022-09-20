@@ -17,6 +17,11 @@ set expandtab
 set smartindent 
 
 
+
+set printfont=JetBrains\ Mono\ 10
+set printencoding=2byte-koi8-r
+
+
 "}}}
 
 " Highlights "{{{
