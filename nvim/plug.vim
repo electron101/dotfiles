@@ -57,6 +57,7 @@ Plug 'xolox/vim-colorscheme-switcher'              " Colorscheme switcher plug
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'cormacrelf/vim-colors-github'
 Plug 'nanotech/jellybeans.vim'
+Plug 'Mofiqul/vscode.nvim'
 
 call plug#end()
 
