@@ -58,6 +58,7 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'cormacrelf/vim-colors-github'
 Plug 'nanotech/jellybeans.vim'
 Plug 'Mofiqul/vscode.nvim'
+Plug 'arzg/vim-colors-xcode'
 
 call plug#end()
 
