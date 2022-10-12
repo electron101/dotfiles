@@ -53,8 +53,12 @@ local on_attach = function(client, bufnr)
   --- 2: null-ls
   --- Type number and <Enter> or click with the mouse (q or empty cancels):
   ---
-  client.resolved_capabilities.document_formatting = true
-  client.resolved_capabilities.document_range_formatting = true
+
+  --- " client.resolved_capabilities.document_formatting = true
+  --- " client.resolved_capabilities.document_range_formatting = true
+
+  client.server_capabilities.documentFormattingProvider = true
+  client.server_capabilities.documentRangeFormattingProvider = true
   
 
   --protocol.SymbolKind = { }
