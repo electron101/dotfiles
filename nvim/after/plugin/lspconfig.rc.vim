@@ -12,6 +12,8 @@ lua << EOF
 require'lspconfig'.clangd.setup{}
 local protocol = require'vim.lsp.protocol'
 
+local navic    = require("nvim-navic")
+
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
@@ -59,6 +61,12 @@ local on_attach = function(client, bufnr)
 
   client.server_capabilities.documentFormattingProvider = true
   client.server_capabilities.documentRangeFormattingProvider = true
+
+  --- If you're sharing your on-attach function between lspconfigs, better wrap
+  --- nvim-navic's attach function to make sure documentSymbolProvider is enabled:
+  if client.server_capabilities.documentSymbolProvider then
+    navic.attach(client, bufnr)
+  end
   
 
   --protocol.SymbolKind = { }

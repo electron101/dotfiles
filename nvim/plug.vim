@@ -27,6 +27,7 @@ if has("nvim")
   Plug 'jose-elias-alvarez/null-ls.nvim'           " (использую для автоформатирования кода)
   Plug 'tami5/lspsaga.nvim'                        " Async Lsp Finder, Code Action, Hover Doc, Rename, Preview Definition, 
                                                    " Jump Diagnostic and Show Diagnostics, Float Terminal
+  Plug 'SmiteshP/nvim-navic'                       " uses LSP to show your current code context
 
   Plug 'nvim-lualine/lualine.nvim'                 " Строка состояния
   Plug 'numToStr/Comment.nvim'                     " Комментарии в коде

@@ -11,6 +11,8 @@ local function my_location()
 	return string.format("%+3s/%s:%-2s", r, total_rows, cur_col);
 end
 
+local navic = require('nvim-navic')
+
 lualine.setup {
   options = {
     icons_enabled = true,
@@ -29,7 +31,8 @@ lualine.setup {
       path = 0 -- 0 = just filename, 1 = relative path, 2 = absolute path
     },
       'filesize',
-		},
+      { navic.get_location, cond = navic.is_available },
+    },
     lualine_x = {
       { 'diagnostics', sources = {"nvim_diagnostic"}, symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '} },
       'encoding',
