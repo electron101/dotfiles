@@ -60,6 +60,8 @@ Plug 'cormacrelf/vim-colors-github'
 Plug 'nanotech/jellybeans.vim'
 Plug 'Mofiqul/vscode.nvim'
 Plug 'arzg/vim-colors-xcode'
+Plug 'morhetz/gruvbox'
+Plug 'sainnhe/gruvbox-material'
 
 call plug#end()
 

@@ -48,11 +48,28 @@ runtime ./maps.vim
 " ---------------------------------------------------------------------
 if exists("&termguicolors") && exists("&winblend")
 	set termguicolors
-	let g:gruvbox_bold = 0
-	colorscheme gruvbox
-	set background=light
-	let g:github_colors_soft = 0
 endif
+
+	set background=light
+
+        " Gruvbox-material
+        let g:gruvbox_material_background = 'hard'
+        let g:gruvbox_material_foreground = 'original'
+        let g:gruvbox_material_visual     = 'grey background'
+        let g:gruvbox_material_menu_selection_background = 'yellow'
+        let g:gruvbox_material_sign_column_background = 'none'
+        let g:gruvbox_material_spell_foreground = 'none'
+        let g:gruvbox_material_ui_contrast = 'high'
+        " let g:gruvbox_material_colors_override = {'bg5': ['#237895', '69']}
+        colorscheme gruvbox-material
+
+        " Gruvbox
+	" let g:gruvbox_bold = 0
+ "        colorscheme gruvbox
+
+        " GitHub
+	" let g:github_colors_soft = 0
+        " colorscheme github
 
 "}}}
 
