@@ -62,6 +62,9 @@ Plug 'Mofiqul/vscode.nvim'
 Plug 'arzg/vim-colors-xcode'
 Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
+Plug 'fxn/vim-monochrome'
+Plug 'ryanpcmcquen/true-monochrome_vim'
+Plug 'sjl/badwolf'
 
 call plug#end()
 

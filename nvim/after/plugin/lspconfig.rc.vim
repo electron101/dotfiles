@@ -42,9 +42,16 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cf', '<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>', opts)
+
+  --- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cf', '<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>', opts)
   --- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cf', '<cmd>lua vim.lsp.buf.formatting_sync()<CR>', opts)
   --- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  --- vim.api.nvim_buf_set_keymap(bufnr, 'v', '<leader>cf', '<ESC><cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cf', '<cmd>lua vim.lsp.buf.format({async = true})<CR>', opts)
+  ---vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr(#{timeout_ms:250})")
+  --- vim.api.nvim_buf_set_keymap(bufnr, 'v', '<leader>cf', '<ESC><cmd>lua vim.lsp.formatexpr()<CR>', opts)
+  --- vim.keymap.set("x", "<Leader>cf", vim.lsp.formatexpr, { buffer = true })
+  --- vim.api.nvim_buf_set_keymap(bufnr, 'v', '<leader>cf', '<ESC><cmd>lua vim.lsp.formatexpr()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'v', '<leader>cf', '<ESC><cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
 
   --- При использовании null-ls у буфера всегда 2 сервера и это напрягает 
