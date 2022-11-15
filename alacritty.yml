@@ -212,12 +212,6 @@ font:
     x: 0
     y: 0
 
-  # Thin stroke font rendering (macOS only)
-  #
-  # Thin strokes are suitable for retina displays, but for non-retina screens
-  # it is recommended to set `use_thin_strokes` to `false`.
-  use_thin_strokes: true
-
   # Use built-in font for box drawing characters.
   #
   # If `true`, Alacritty will use a custom built-in font for box drawing
@@ -378,7 +372,7 @@ bell:
   #   - Linear
   animation: EaseOutExpo
 
-  # Duration of the visual bell flash in milliseconds. A `duration` of `0` will
+  # Duration Linear      of the visual bell flash in milliseconds. A `duration` of `0` will
   # disable the visual bell animation.
   #duration: 0
   # Visual bell animation color.
@@ -402,7 +396,7 @@ selection:
   # "semantic words" in Alacritty.
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
   # When set to `true`, selected text will be copied to the primary clipboard.
-  #save_to_clipboard: false
+  save_to_clipboard: true
 
 cursor:
   # Cursor style
@@ -434,9 +428,15 @@ cursor:
   # Cursor blinking interval in milliseconds.
   blink_interval: 480
 
+  # Time after which cursor stops blinking, in seconds.
+  #
+  # Specifying '0' will disable timeout for blinking.
+  blink_timeout: 0
+
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
-  #unfocused_hollow: true
+  unfocused_hollow: true
+
   # Thickness of the cursor relative to the cell width as floating point number
   # from `0.0` to `1.0`.
   thickness: 0.15
@@ -451,75 +451,87 @@ live_config_reload: true
 # shell.
 #
 # Default:
-#   - (macOS) /bin/bash --login
-#   - (Linux/BSD) user login shell
+#   - (Linux/BSD/macOS) `$SHELL` or the user's login shell, if `$SHELL` is unset
 #   - (Windows) powershell
 #shell:
 #  program: /bin/bash
 #  args:
 #    - --login
+
 # Startup directory
 #
 # Directory the shell is started in. If this is unset, or `None`, the working
 # directory of the parent process will be used.
 #working_directory: None
+
 # Send ESC (\x1b) before characters when alt is pressed.
 #alt_send_esc: true
+
 # Offer IPC using `alacritty msg` (unix only)
 ipc_socket: true
 
 #mouse:
-# Click settings
+  # Click settings
+  #
+  # The `double_click` and `triple_click` settings control the time
+  # alacritty should wait for accepting multiple clicks as one double
+  # or triple click.
+  #double_click: { threshold: 300 }
+  #triple_click: { threshold: 300 }
+
+  # If this is `true`, the cursor is temporarily hidden when typing.
+  #hide_when_typing: false
+
+# Hints
 #
-# The `double_click` and `triple_click` settings control the time
-# alacritty should wait for accepting multiple clicks as one double
-# or triple click.
-#double_click: { threshold: 300 }
-#triple_click: { threshold: 300 }
-# If this is `true`, the cursor is temporarily hidden when typing.
-#hide_when_typing: false
-# Regex hints
-#
-# Terminal hints can be used to find text in the visible part of the terminal
-# and pipe it to other applications.
+# Terminal hints can be used to find text or hyperlink in the visible part of
+# the terminal and pipe it to other applications.
 #hints:
-# Keys used for the hint labels.
-#alphabet: "jfkdls;ahgurieowpq"
-# List with all available hints
-#
-# Each hint must have a `regex` and either an `action` or a `command` field.
-# The fields `mouse`, `binding` and `post_processing` are optional.
-#
-# The fields `command`, `binding.key`, `binding.mods`, `binding.mode` and
-# `mouse.mods` accept the same values as they do in the `key_bindings` section.
-#
-# The `mouse.enabled` field controls if the hint should be underlined while
-# the mouse with all `mouse.mods` keys held or the vi mode cursor is above it.
-#
-# If the `post_processing` field is set to `true`, heuristics will be used to
-# shorten the match if there are characters likely not to be part of the hint
-# (e.g. a trailing `.`). This is most useful for URIs.
-#
-# Values for `action`:
-#   - Copy
-#       Copy the hint's text to the clipboard.
-#   - Paste
-#       Paste the hint's text to the terminal or search.
-#   - Select
-#       Select the hint's text.
-#   - MoveViModeCursor
-#       Move the vi mode cursor to the beginning of the hint.
-#enabled:
-# - regex: "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)\
-#           [^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
-#   command: xdg-open
-#   post_processing: true
-#   mouse:
-#     enabled: true
-#     mods: None
-#   binding:
-#     key: U
-#     mods: Control|Shift
+  # Keys used for the hint labels.
+  #alphabet: "jfkdls;ahgurieowpq"
+
+  # List with all available hints
+  #
+  # Each hint must have any of `regex` or `hyperlinks` field and either an
+  # `action` or a `command` field. The fields `mouse`, `binding` and
+  # `post_processing` are optional.
+  #
+  # The `hyperlinks` option will cause OSC 8 escape sequence hyperlinks to be
+  # highlighted.
+  #
+  # The fields `command`, `binding.key`, `binding.mods`, `binding.mode` and
+  # `mouse.mods` accept the same values as they do in the `key_bindings` section.
+  #
+  # The `mouse.enabled` field controls if the hint should be underlined while
+  # the mouse with all `mouse.mods` keys held or the vi mode cursor is above it.
+  #
+  # If the `post_processing` field is set to `true`, heuristics will be used to
+  # shorten the match if there are characters likely not to be part of the hint
+  # (e.g. a trailing `.`). This is most useful for URIs and applies only to
+  # `regex` matches.
+  #
+  # Values for `action`:
+  #   - Copy
+  #       Copy the hint's text to the clipboard.
+  #   - Paste
+  #       Paste the hint's text to the terminal or search.
+  #   - Select
+  #       Select the hint's text.
+  #   - MoveViModeCursor
+  #       Move the vi mode cursor to the beginning of the hint.
+  #enabled:
+  # - regex: "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)\
+  #           [^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+  #   hyperlinks: true
+  #   command: xdg-open
+  #   post_processing: true
+  #   mouse:
+  #     enabled: true
+  #     mods: None
+  #   binding:
+  #     key: U
+  #     mods: Control|Shift
+
 # Mouse bindings
 #
 # Mouse bindings are specified as a list of objects, much like the key
@@ -549,9 +561,9 @@ ipc_socket: true
 #
 # - `mods` (see key bindings)
 mouse_bindings:
-  - { mouse: Right, action: ExpandSelection }
-  #  - { mouse: Right,  mods: Control, action: ExpandSelection }
-  - { mouse: Middle, mode: ~Vi, action: PasteSelection }
+ - { mouse: Right,                 action: ExpandSelection }
+#  - { mouse: Right,  mods: Control, action: ExpandSelection }
+ - { mouse: Middle, mode: ~Vi,     action: PasteSelection  }
 
 # Key bindings
 #
@@ -1068,34 +1080,30 @@ key_bindings:
   # Print all received window events.
   #print_events: false
 colors:
-  # Default colors
+  name: Yousai
+  author: Kori
   primary:
-    background: '0xffffff'
-    foreground: '0x4d5566'
-
-  # Normal colors
+    background: "#F5E7DE"
+    foreground: "#34302D"
+  cursor:
+    text: "#F5E7DE"
+    cursor: "#34302D"
   normal:
-    black: '0x24292e'
-    red: '0xd73a49'
-    green: '0x22863a'
-    yellow: '0xb08800'
-    blue: '0x0366d6'
-    magenta: '0x6f42c1'
-    cyan: '0x1b7c83'
-    white: '0x4d5566'
-
-  # Bright colors
+    black: "#666661"
+    red: "#992E2E"
+    green: "#4C3226"
+    yellow: "#A67C53"
+    blue: "#4C7399"
+    magenta: "#BF9986"
+    cyan: "#D97742"
+    white: "#34302D"
   bright:
-    black: '0x586069'
-    red: '0xcb2431'
-    green: '0x28a745'
-    yellow: '0xdbab09'
-    blue: '0x2188ff'
-    magenta: '0x8a63d2'
-    cyan: '0x1b7c83'
-    white: '0x4d5566'
-
-  indexed_colors:
-    - { index: 16, color: '0xd18616' }
-    - { index: 17, color: '0xcb2431' }
-theme: github_light_default
+    black: "#7F7F7A"
+    red: "#B23636"
+    green: "#664233"
+    yellow: "#BF8F60"
+    blue: "#5986B2"
+    magenta: "#D9AE98"
+    cyan: "#F2854A"
+    white: "#4C4742"
+theme: Yousai
