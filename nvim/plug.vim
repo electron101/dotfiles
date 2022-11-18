@@ -65,6 +65,8 @@ Plug 'sainnhe/gruvbox-material'
 Plug 'fxn/vim-monochrome'
 Plug 'ryanpcmcquen/true-monochrome_vim'
 Plug 'sjl/badwolf'
+Plug 'vim-scripts/chlordane.vim'
+Plug 'tssm/c64-vim-color-scheme'
 
 call plug#end()
 
