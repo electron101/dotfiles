@@ -30,7 +30,6 @@ lualine.setup {
       file_status = true, -- displays file status (readonly status, modified status)
       path = 0 -- 0 = just filename, 1 = relative path, 2 = absolute path
     },
-      'filesize',
       { navic.get_location, cond = navic.is_available },
     },
     lualine_x = {
@@ -39,7 +38,10 @@ lualine.setup {
       'fileformat',
       'filetype'
     },
-    lualine_y = {'progress'},
+    lualine_y = {
+      'filesize',
+      'progress'
+    },
     lualine_z = {
 			-- 'location', }
 			my_location }
