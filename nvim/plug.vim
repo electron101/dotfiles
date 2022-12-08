@@ -42,6 +42,7 @@ if has("nvim")
   Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' } " встроенный сортировщик 
                                                    " телескопа, чтобы значительно повысить 
                                                    " производительность сортировки.
+  Plug 'lewis6991/gitsigns.nvim'                   " Git индикация добавленных, удаленных и измененных строк
 endif
 
 Plug 'tpope/vim-fugitive'                          " Работа с git
