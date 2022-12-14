@@ -68,6 +68,9 @@ Plug 'ryanpcmcquen/true-monochrome_vim'
 Plug 'sjl/badwolf'
 Plug 'vim-scripts/chlordane.vim'
 Plug 'tssm/c64-vim-color-scheme'
+Plug 'sainnhe/edge'
+Plug 'habamax/vim-pire'
+Plug 'scolsen/hara'
 
 call plug#end()
 
