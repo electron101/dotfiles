@@ -52,6 +52,7 @@ Plug 'tpope/vim-surround'                          " Обрамитель в (к
 
 " Плагины цветовых схем --------------------------
 Plug 'rafi/awesome-vim-colorschemes'               " Collection of awesome color schemes for Vim
+Plug 'flazz/vim-colorschemes'               
 " ---------------------------------------
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-colorscheme-switcher'              " Colorscheme switcher plug 
