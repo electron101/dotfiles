@@ -196,8 +196,8 @@ font:
     style: Bold Italic
 
   # Point size
-  size: 8.0
-
+  size: 7.5
+  # size: 8.0
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
   # spacing.
@@ -1075,30 +1075,32 @@ key_bindings:
 colors:
   # Default colors
   primary:
-    # hard contrast: background = '#f9f5d7'
-    background: '#fbf1c7'
-    # soft contrast: background = '#f2e5bc'
-    foreground: '#3c3836'
+    background: '0xffffff'
+    foreground: '0x4d5566'
 
   # Normal colors
   normal:
-    black: '#fbf1c7'
-    red: '#cc241d'
-    green: '#98971a'
-    yellow: '#d79921'
-    blue: '#458588'
-    magenta: '#b16286'
-    cyan: '#689d6a'
-    white: '#7c6f64'
+    black: '0x24292e'
+    red: '0xd73a49'
+    green: '0x22863a'
+    yellow: '0xb08800'
+    blue: '0x0366d6'
+    magenta: '0x6f42c1'
+    cyan: '0x1b7c83'
+    white: '0x4d5566'
 
   # Bright colors
   bright:
-    black: '#928374'
-    red: '#9d0006'
-    green: '#79740e'
-    yellow: '#b57614'
-    blue: '#076678'
-    magenta: '#8f3f71'
-    cyan: '#427b58'
-    white: '#3c3836'
-theme: Gruvbox-Light
+    black: '0x586069'
+    red: '0xcb2431'
+    green: '0x28a745'
+    yellow: '0xdbab09'
+    blue: '0x2188ff'
+    magenta: '0x8a63d2'
+    cyan: '0x1b7c83'
+    white: '0x4d5566'
+
+  indexed_colors:
+    - { index: 16, color: '0xd18616' }
+    - { index: 17, color: '0xcb2431' }
+theme: github_light_default
