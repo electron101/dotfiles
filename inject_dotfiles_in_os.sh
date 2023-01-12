@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOT_DIR="$HOME/dotfiles"
+# DOT_DIR="$HOME/dotfiles"
 
 NVIM_DIR="$HOME/.config/nvim"
 today=$(date +"%Y-%m-%d_%X") # пример формата 2022-05-02_13:40:03
@@ -21,26 +21,26 @@ fi
 
 # Alacritty
 mkdir -p ~/.config/alacritty
-ln -sf "$DOT_DIR"/alacritty.yml "$HOME"/.config/alacritty/alacritty.yml
+ln -sf "$PWD"/alacritty.yml "$HOME"/.config/alacritty/alacritty.yml
 
 # Zsh
-ln -sf "$DOT_DIR"/zshrc "$HOME"/.zshrc
+ln -sf "$PWD"/zshrc "$HOME"/.zshrc
 
 # P10k
-ln -sf "$DOT_DIR"/p10k.zsh "$HOME"/.p10k.zsh
+ln -sf "$PWD"/p10k.zsh "$HOME"/.p10k.zsh
 
 # Vim
-ln -sf "$DOT_DIR"/vimrc "$HOME"/.vimrc
+ln -sf "$PWD"/vimrc "$HOME"/.vimrc
 
 # Nvim
-ln -sf "$DOT_DIR"/nvim "$HOME"/.config
+ln -sf "$PWD"/nvim "$HOME"/.config
 
 # Tmux
-ln -sf "$DOT_DIR"/tmux.conf "$HOME"/.tmux.conf
+ln -sf "$PWD"/tmux.conf "$HOME"/.tmux.conf
 
 # Vifm
 mkdir -p ~/.config/vifm
-ln -sf "$DOT_DIR"/vifmrc "$HOME"/.config/vifm/vifmrc
+ln -sf "$PWD"/vifmrc "$HOME"/.config/vifm/vifmrc
 # ---------------------------------------------------------------------
 
 
