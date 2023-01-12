@@ -1,45 +1,46 @@
 #!/bin/bash
 
+DOT_DIR="$HOME/dotfiles"
+
 NVIM_DIR="$HOME/.config/nvim"
 today=$(date +"%Y-%m-%d_%X") # пример формата 2022-05-02_13:40:03
 
 
 echo "[*] Start inject dot files in system"
 
-# Если ~/.config/nvim уже существует (и это папка), переименуем её.
-#
+# Если ~/.config/nvim уже существует (и это папка), скопируем её в каталог
+# ~/.config с именем nvim_YYYY-mm-dd_HH:MM:SS.
 if [ -d "$NVIM_DIR" ] 
 then 
-   echo "$NVIM_DIR exists on your filesystem. Rename dir"
-   mv -- "$NVIM_DIR" "${NVIM_DIR}_${today}"
+   echo "[NVIM] $NVIM_DIR exists on your filesystem. Backup nvim dir"
+   cp -rL "$NVIM_DIR" "${NVIM_DIR}_${today}"
 fi
-
-mkdir -p ~/.config/alacritty
-mkdir -p ~/.config/vifm
 
 # Создать символические ссылки
 # ---------------------------------------------------------------------
 
 # Alacritty
-ln -sf ~/.dotfiles/alacritty.yml ~/.config/alacritty/alacritty.yml
+mkdir -p ~/.config/alacritty
+ln -sf "$DOT_DIR"/alacritty.yml "$HOME"/.config/alacritty/alacritty.yml
 
 # Zsh
-ln -sf ~/.dotfiles/zshrc ~/.zshrc
+ln -sf "$DOT_DIR"/zshrc "$HOME"/.zshrc
 
 # P10k
-ln -sf ~/.dotfiles/p10k.zsh ~/.p10k.zsh
+ln -sf "$DOT_DIR"/p10k.zsh "$HOME"/.p10k.zsh
 
 # Vim
-ln -sf ~/.dotfiles/vimrc ~/.vimrc
+ln -sf "$DOT_DIR"/vimrc "$HOME"/.vimrc
 
 # Nvim
-ln -sf ~/.dotfiles/nvim ~/.config
+ln -sf "$DOT_DIR"/nvim "$HOME"/.config
 
 # Tmux
-ln -sf ~/.dotfiles/tmux.conf ~/.tmux.conf
+ln -sf "$DOT_DIR"/tmux.conf "$HOME"/.tmux.conf
 
 # Vifm
-ln -sf ~/.dotfiles/vifmrc ~/.config/vifm/vifmrc
+mkdir -p ~/.config/vifm
+ln -sf "$DOT_DIR"/vifmrc "$HOME"/.config/vifm/vifmrc
 # ---------------------------------------------------------------------
 
 
