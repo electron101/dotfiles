@@ -61,15 +61,18 @@ endif
         let g:gruvbox_material_spell_foreground = 'none'
         let g:gruvbox_material_ui_contrast = 'high'
         " let g:gruvbox_material_colors_override = {'bg5': ['#237895', '69']}
-        colorscheme gruvbox-material
+        " colorscheme gruvbox-material
 
         " Gruvbox
 	" let g:gruvbox_bold = 0
- "        colorscheme gruvbox
+        " colorscheme gruvbox
 
         " GitHub
 	" let g:github_colors_soft = 0
         " colorscheme github
+
+        " Off
+        colorscheme off
 
 "}}}
 
