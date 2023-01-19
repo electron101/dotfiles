@@ -14,18 +14,31 @@ call plug#begin()
 
 if has("nvim") 
 
-  " LSP ------------------------------------------
+  " LSP ------------------------------------------ {{{
+  " LSP Support
   Plug 'neovim/nvim-lspconfig'                     " Набор общих конфигураций для клиента Neovim, 
                                                    " встроенного в языковой сервер.
-  Plug 'williamboman/nvim-lsp-installer'           " Позволяет легко управлять серверами LSP
-  Plug 'hrsh7th/cmp-nvim-lsp'                      " Источник для клиента Neovim встроенного в языковой сервер.
+  Plug 'williamboman/mason.nvim'                   " Optional
+  Plug 'williamboman/mason-lspconfig.nvim'         " Optional
+
+  " Autocompletion Engine
   Plug 'hrsh7th/nvim-cmp'                          " Плагин завершения для neovim
-  Plug 'hrsh7th/cmp-buffer'
-  Plug 'L3MON4D3/LuaSnip'                          " Snippet Engine для Neovim
+  Plug 'hrsh7th/cmp-nvim-lsp'                      " Источник для клиента Neovim встроенного в языковой сервер.
+  Plug 'hrsh7th/cmp-buffer'                        "
+  Plug 'hrsh7th/cmp-path'                          " 
   Plug 'saadparwaiz1/cmp_luasnip'                  " Источник завершения luasnip для nvim-cmp
+  Plug 'hrsh7th/cmp-nvim-lua'
+
+  " Snippets
+  Plug 'L3MON4D3/LuaSnip'                          " Snippet Engine для Neovim
+  Plug 'rafamadriz/friendly-snippets'              " Optional
+
   Plug 'onsails/lspkind-nvim'                      " Пиктограммы(в автодополнении), похожие на vscode
   Plug 'jose-elias-alvarez/null-ls.nvim'           " (использую для автоформатирования кода)
   Plug 'tami5/lspsaga.nvim'                        " Async Lsp Finder, Code Action, Hover Doc, Rename, Preview Definition, 
+  Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v1.x'}
+  " LSP ------------------------------------------ }}}
+
                                                    " Jump Diagnostic and Show Diagnostics, Float Terminal
   Plug 'SmiteshP/nvim-navic'                       " uses LSP to show your current code context
 
