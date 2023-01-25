@@ -24,6 +24,7 @@ lsp.setup_nvim_cmp({
 
 
 lsp.on_attach(function(client, bufnr)
+        -- print('Greetings from on_attach')
   local opts = {buffer = bufnr, remap = false}
 
   -- vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
@@ -52,9 +53,5 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<space>gr", function() vim.lsp.buf.references()              end, opts)
 
 end)
-
-lsp.set_server_config({
-  single_file_support = true,
-})
 
 lsp.setup()
