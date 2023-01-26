@@ -42,6 +42,10 @@ set cursorline       " Подсветка текущей строки
 runtime ./plug.vim
 
 runtime ./maps.vim
+
+" LSP-Zero обязательно вызывать имеено здесь, иначе LSP не старнует при
+" запуске, а толкьо при вводе команд (:e ; :LspStart)
+runtime ./after/plugin/lsp/lsp-zero.rc.lua
 "}}}
 
 " Syntax theme "{{{
