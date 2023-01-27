@@ -55,3 +55,40 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 lsp.setup()
+
+
+
+
+
+local null_ls = require('null-ls')
+local null_opts = lsp.build_options('null-ls', {})
+
+null_ls.setup({
+  on_attach = function(client, bufnr)
+    null_opts.on_attach(client, bufnr)
+
+    local format_cmd = function(input)
+      vim.lsp.buf.format({
+        id = client.id,
+        timeout_ms = 5000,
+        async = input.bang,
+      })
+    end
+
+    local bufcmd = vim.api.nvim_buf_create_user_command
+    bufcmd(bufnr, 'NullFormat', format_cmd, {
+      bang = true,
+      range = true,
+      desc = 'Format using null-ls'
+    })
+  end,
+  sources = {
+    --- Replace these with the tools you have installed
+    null_ls.builtins.formatting.clang_format,
+    null_ls.builtins.formatting.stylua,
+    null_ls.builtins.formatting.prettier,
+  }
+})
+
+
+
