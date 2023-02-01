@@ -81,6 +81,7 @@ null_ls.setup({
   sources = {
     --- Replace these with the tools you have installed
     null_ls.builtins.formatting.clang_format,
+    -- null_ls.builtins.formatting.stylua,
     null_ls.builtins.formatting.stylua.with({
       extra_args = { "--indent-type", "Spaces", "--indent-width", "2" },
     }),
