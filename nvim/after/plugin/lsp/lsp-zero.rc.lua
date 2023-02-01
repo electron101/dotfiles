@@ -25,6 +25,18 @@ lsp.set_server_config({
 
 lsp.on_attach(function(client, bufnr)
   print('Greetings from on_attach')
+
+  -- Пока не указал кодировку всё время вылазило это предупреждение warning:
+  -- multiple different client offset_encodings detected for buffer, this
+  -- is not supported yet
+  -- https://www.reddit.com/r/neovim/comments/tul8pb/lsp_clangd_warning_multiple_different_client/
+  -- client.offset_encoding = "utf-8"
+
+  client.server_capabilities.documentFormattingProvider = true
+  client.server_capabilities.documentRangeFormattingProvider = true
+
+
+
   local opts = {buffer = bufnr, remap = false}
 
   -- vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
@@ -52,7 +64,10 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<space>ca", function() vim.lsp.buf.code_action()             end, opts)
   vim.keymap.set("n", "<space>gr", function() vim.lsp.buf.references()              end, opts)
 
+  vim.keymap.set("n", "<space>gr", function() vim.lsp.buf.references()              end, opts)
+
 end)
+
 
 lsp.setup()
 
@@ -64,9 +79,19 @@ local null_ls = require('null-ls')
 local null_opts = lsp.build_options('null-ls', {})
 
 null_ls.setup({
+  sources = {
+    --- Replace these with the tools you have installed
+    null_ls.builtins.formatting.clang_format.with {
+        filetypes = { "cpp", "c", "cc" },
+    },
+    null_ls.builtins.formatting.stylua.with({
+      extra_args = { "--indent-type", "Spaces", "--indent-width", "2" },
+    }),
+  },
   on_attach = function(client, bufnr)
     null_opts.on_attach(client, bufnr)
 
+    -- Create new command - NullFormat  ----------------------------------
     local format_cmd = function(input)
       vim.lsp.buf.format({
         id = client.id,
@@ -81,14 +106,34 @@ null_ls.setup({
       range = true,
       desc = 'Format using null-ls'
     })
+    ----------------------------------------------------------------------
+
+    local format_opts = { bufnr = bufnr }
+
+    if client.server_capabilities.documentFormattingProvider then
+      vim.keymap.set("n", "<Leader>cf", function()
+        vim.lsp.buf.format(format_opts)
+      end, {
+        buffer = bufnr,
+        silent = true,
+        desc = "null-ls: Format whole file",
+      })
+    end
+
+    -- if client.server_capabilities.documentRangeFormattingProvider then
+    --         vim.cmd("xnoremap <silent><buffer> <leader>lf :lua vim.lsp.buf.range_format({})<CR>")
+    -- end
+
+    if client.server_capabilities.documentRangeFormattingProvider then
+      -- in visual mode automatically set to range?
+      vim.keymap.set("x", "<Leader>cf", function()
+        vim.lsp.buf.format(format_opts)
+      end, {
+        buffer = bufnr,
+        silent = true,
+        desc = "null-ls: Format selected range",
+      })
+    end
+
   end,
-  sources = {
-    --- Replace these with the tools you have installed
-    null_ls.builtins.formatting.clang_format,
-    null_ls.builtins.formatting.stylua,
-    null_ls.builtins.formatting.prettier,
-  }
 })
-
-
-
