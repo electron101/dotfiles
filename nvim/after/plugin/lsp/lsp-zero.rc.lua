@@ -26,15 +26,10 @@ lsp.set_server_config({
 lsp.on_attach(function(client, bufnr)
   print('Greetings from on_attach')
 
-  -- Пока не указал кодировку всё время вылазило это предупреждение warning:
-  -- multiple different client offset_encodings detected for buffer, this
-  -- is not supported yet
-  -- https://www.reddit.com/r/neovim/comments/tul8pb/lsp_clangd_warning_multiple_different_client/
-  client.offset_encoding = "utf-8"
+  -- client.offsetEncoding = "utf-8"
 
   client.server_capabilities.documentFormattingProvider = true
   client.server_capabilities.documentRangeFormattingProvider = true
-
 
   local opts = {buffer = bufnr, remap = false}
 
@@ -67,51 +62,66 @@ lsp.on_attach(function(client, bufnr)
 
 end)
 
+-- local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+--
+-- lsp.configure('clangd', {
+--   on_attach = function(client, bufnr)
+--     print('hello clangd')
+--     client.offsetEncoding = "utf-16"
+--   end,
+-- })
+
+https://www.reddit.com/r/neovim/comments/wmj8kb/i_have_nullls_and_clangd_attached_to_a_buffer_c/
+ local capabilities = vim.lsp.protocol.make_client_capabilities()
+ capabilities.offsetEncoding = 'utf-8'
+ require('lspconfig').clangd.setup{
+        capabilities = capabilities
+}
 
 lsp.setup()
 
-
-
-
 -- NULL-LS ---------------------------------------------------------------------
-local null_ls = require('null-ls')
-local null_opts = lsp.build_options('null-ls', {})
+local null_ls = require("null-ls")
+local null_opts = lsp.build_options("null-ls", {})
 
 null_ls.setup({
-  sources = {
-    --- Replace these with the tools you have installed
-    null_ls.builtins.formatting.clang_format,
-    -- null_ls.builtins.formatting.stylua,
-    null_ls.builtins.formatting.stylua.with({
-      extra_args = { "--indent-type", "Spaces", "--indent-width", "2" },
-    }),
-  },
-  on_attach = function(client, bufnr)
-    null_opts.on_attach(client, bufnr)
+    sources = {
+        null_ls.builtins.formatting.clang_format,
+        -- null_ls.builtins.formatting.stylua,
+        null_ls.builtins.formatting.stylua.with({
+            extra_args = { "--indent-type", "Spaces", "--indent-width", "4" },
+        }),
+    },
+    on_attach = function(client, bufnr)
+        null_opts.on_attach(client, bufnr)
 
-    local format_opts = { bufnr = bufnr }
+        -- Пока не указал кодировку всё время вылазило это предупреждение warning:
+        -- multiple different client offset_encodings detected for buffer, this is not supported yet
+        -- https://github.com/jose-elias-alvarez/null-ls.nvim/issues/428#issuecomment-1120578988
+        -- client.offset_encoding = "utf-16"
 
-    if client.server_capabilities.documentFormattingProvider then
-      vim.keymap.set("n", "<leader>cf", function()
-        vim.lsp.buf.format(format_opts)
-      end, {
-        buffer = bufnr,
-        silent = true,
-        desc = "null-ls: Format whole file",
-      })
-    end
+        local format_opts = { bufnr = bufnr }
 
-    if client.server_capabilities.documentRangeFormattingProvider then
-      -- in visual mode automatically set to range?
-      vim.keymap.set("x", "<leader>cf", function()
-        vim.lsp.buf.format(format_opts)
-      end, {
-        buffer = bufnr,
-        silent = true,
-        desc = "null-ls: Format selected range",
-      })
-    end
+        if client.server_capabilities.documentFormattingProvider then
+            vim.keymap.set("n", "<leader>cf", function()
+                vim.lsp.buf.format(format_opts)
+            end, {
+                buffer = bufnr,
+                silent = true,
+                desc = "null-ls: Format whole file",
+            })
+        end
 
-  end,
+        if client.server_capabilities.documentRangeFormattingProvider then
+            -- in visual mode automatically set to range?
+            vim.keymap.set("x", "<leader>cf", function()
+                vim.lsp.buf.format(format_opts)
+            end, {
+                buffer = bufnr,
+                silent = true,
+                desc = "null-ls: Format selected range",
+            })
+        end
+    end,
 })
 --------------------------------------------------------------------------------
