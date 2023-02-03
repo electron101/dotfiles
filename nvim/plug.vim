@@ -28,6 +28,8 @@ if has("nvim")
   Plug 'hrsh7th/cmp-path'                          " 
   Plug 'saadparwaiz1/cmp_luasnip'                  " Источник завершения luasnip для nvim-cmp
   Plug 'hrsh7th/cmp-nvim-lua'
+  Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
+
 
   " Snippets
   Plug 'L3MON4D3/LuaSnip'                          " Snippet Engine для Neovim

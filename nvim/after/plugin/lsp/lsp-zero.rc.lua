@@ -75,28 +75,29 @@ lsp.configure("clangd", {
     capabilities = clangd_capabilities,
 })
 
-
-
-
 lsp.setup()
+
+
+
 
 ---
 -- Autocompletion
 ---
-
-
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 local cmp     = require("cmp")
 local lspkind = require('lspkind')
 
 -- mapping
-local cmp_select   = { behavior = cmp.SelectBehavior.Select }
+local cmp_select   = { behavior = cmp.SelectBehavior.Insert }
 local cmp_mappings = lsp.defaults.cmp_mappings({
-    ["<C-p>"]      = cmp.mapping.select_prev_item(cmp_select),
-    ["<C-n>"]      = cmp.mapping.select_next_item(cmp_select),
-    ["<C-y>"]      = cmp.mapping.confirm({ select = true }),
-    ["<C-Space>"]  = cmp.mapping.complete(),
+    ["<C-p>"]     = cmp.mapping.select_prev_item(cmp_select),
+    ["<C-n>"]     = cmp.mapping.select_next_item(cmp_select),
+    ["<C-Space>"] = cmp.mapping.complete(),
+    ['<CR>']      = cmp.mapping.confirm({
+        behavior = cmp.ConfirmBehavior.Replace,
+        select   = true,
+    }),
 })
 
 -- formatting
@@ -116,16 +117,25 @@ local cmp_formatting = {
     }),
 }
 
+-- sources
+local cmp_sources = lsp.defaults.cmp_sources({
+    { name = 'nvim_lsp_signature_help' },
+})
+
 local cmp_config = lsp.defaults.cmp_config({
     mapping    = cmp_mappings,
     formatting = cmp_formatting,
+    sources    = cmp_sources,
+    -- sources    = cmp_formatting,
 })
 
 cmp.setup(cmp_config)
 
 
 
--- NULL-LS ---------------------------------------------------------------------
+---
+-- NULL-LS 
+---
 local null_ls = require("null-ls")
 local null_opts = lsp.build_options("null-ls", {})
 
@@ -164,4 +174,3 @@ null_ls.setup({
         end
     end,
 })
---------------------------------------------------------------------------------
