@@ -30,6 +30,8 @@ if has("nvim")
   Plug 'hrsh7th/cmp-nvim-lua'
   Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 
+  Plug 'ray-x/lsp_signature.nvim'
+
 
   " Snippets
   Plug 'L3MON4D3/LuaSnip'                          " Snippet Engine для Neovim

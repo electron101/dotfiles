@@ -43,6 +43,15 @@ lsp.on_attach(function(client, bufnr)
     end
     ----------------------------------------------------------------------------
 
+    -- LSP SIGNATURE -----------------------------------------------------------
+    -- require "lsp_signature".on_attach({
+    --     bind = true, -- This is mandatory, otherwise border config won't get registered.
+    --     handler_opts = {
+    --         border = "rounded"
+    --     }
+    -- }, bufnr)
+    ----------------------------------------------------------------------------
+
     local opts = { buffer = bufnr, remap = false }
 
     vim.keymap.set("n", "<leader>e", function() vim.diagnostic.open_float()           end, opts)
@@ -79,9 +88,25 @@ lsp.setup()
 
 
 
+require "lsp_signature".setup({
+    bind = true, -- This is mandatory, otherwise border config won't get registered.
+    handler_opts = {
+        border = "rounded"
+    }
+})
+
+vim.keymap.set({ 'n' }, '<C-l>', function() require('lsp_signature').toggle_float_win()
+end, { silent = true, noremap = true, desc = 'toggle signature' })
+
+-- vim.keymap.set({ "n" }, "<Leader>l", function()
+--     vim.lsp.buf.signature_help()
+-- end, { silent = true, noremap = true, desc = "toggle signature" })
+
+
+
 
 ---
--- Autocompletion
+-- CMP, Autocompletion
 ---
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
