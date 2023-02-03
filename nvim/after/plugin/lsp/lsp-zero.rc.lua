@@ -26,8 +26,6 @@ lsp.set_server_config({
 lsp.on_attach(function(client, bufnr)
   print('Greetings from on_attach')
 
-  -- client.offsetEncoding = "utf-8"
-
   client.server_capabilities.documentFormattingProvider = true
   client.server_capabilities.documentRangeFormattingProvider = true
 
@@ -62,21 +60,15 @@ lsp.on_attach(function(client, bufnr)
 
 end)
 
--- local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
---
--- lsp.configure('clangd', {
---   on_attach = function(client, bufnr)
---     print('hello clangd')
---     client.offsetEncoding = "utf-16"
---   end,
--- })
 
-https://www.reddit.com/r/neovim/comments/wmj8kb/i_have_nullls_and_clangd_attached_to_a_buffer_c/
- local capabilities = vim.lsp.protocol.make_client_capabilities()
- capabilities.offsetEncoding = 'utf-8'
- require('lspconfig').clangd.setup{
-        capabilities = capabilities
-}
+-- Пока не указал кодировку всё время вылазило это предупреждение warning:
+-- multiple different client offset_encodings detected for buffer, this is not supported yet
+-- https://www.reddit.com/r/neovim/comments/wmj8kb/i_have_nullls_and_clangd_attached_to_a_buffer_c/
+local clangd_capabilities = vim.lsp.protocol.make_client_capabilities()
+clangd_capabilities.offsetEncoding = 'utf-8'
+lsp.configure('clangd', {
+    capabilities = clangd_capabilities,
+})
 
 lsp.setup()
 
@@ -94,11 +86,6 @@ null_ls.setup({
     },
     on_attach = function(client, bufnr)
         null_opts.on_attach(client, bufnr)
-
-        -- Пока не указал кодировку всё время вылазило это предупреждение warning:
-        -- multiple different client offset_encodings detected for buffer, this is not supported yet
-        -- https://github.com/jose-elias-alvarez/null-ls.nvim/issues/428#issuecomment-1120578988
-        -- client.offset_encoding = "utf-16"
 
         local format_opts = { bufnr = bufnr }
 
