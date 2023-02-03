@@ -10,6 +10,7 @@ set noswapfile       " Не создавать swp файлы
 " отступы в «нужных» местах.
 " https://habr.com/ru/post/64224/
 " https://linuxhandbook.com/vim-indentation-tab-spaces/
+" https://vim.fandom.com/wiki/Converting_tabs_to_spaces
 set tabstop=8
 set shiftwidth=8
 set smarttab
