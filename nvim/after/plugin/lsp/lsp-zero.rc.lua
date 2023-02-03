@@ -32,7 +32,6 @@ lsp.set_server_config({
 })
 
 lsp.on_attach(function(client, bufnr)
-    print("Greetings from on_attach")
 
     client.server_capabilities.documentFormattingProvider      = true
     client.server_capabilities.documentRangeFormattingProvider = true
@@ -85,47 +84,40 @@ lsp.setup()
 -- Autocompletion
 ---
 
-local lspkind = require('lspkind')
 
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
-local cmp = require("cmp")
+local cmp     = require("cmp")
+local lspkind = require('lspkind')
 
 -- mapping
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
+local cmp_select   = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
-    ["<C-p>"]     = cmp.mapping.select_prev_item(cmp_select),
-    ["<C-n>"]     = cmp.mapping.select_next_item(cmp_select),
-    ["<C-y>"]     = cmp.mapping.confirm({ select = true }),
-    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<C-p>"]      = cmp.mapping.select_prev_item(cmp_select),
+    ["<C-n>"]      = cmp.mapping.select_next_item(cmp_select),
+    ["<C-y>"]      = cmp.mapping.confirm({ select = true }),
+    ["<C-Space>"]  = cmp.mapping.complete(),
 })
 
 -- formatting
 local cmp_formatting = {
     fields = { "abbr", "kind", "menu" },
     format = lspkind.cmp_format({
-        mode = "symbol_text",
-        maxwidth = 50,
+        mode          = "symbol_text",
+        maxwidth      = 50,
         ellipsis_char = "...",
         menu = ({
-            buffer = "[Buffer]",
-            nvim_lsp = "[LSP]",
-            luasnip = "[LuaSnip]",
-            nvim_lua = "[Lua]",
+            buffer        = "[Buffer]",
+            nvim_lsp      = "[LSP]",
+            luasnip       = "[LuaSnip]",
+            nvim_lua      = "[Lua]",
             latex_symbols = "[Latex]",
         }),
-
-        -- The function below will be called before any actual modifications from lspkind
-        -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-        -- before = function(entry, vim_item)
-        --     -- ...
-        --     return vim_item
-        -- end,
     }),
 }
 
 local cmp_config = lsp.defaults.cmp_config({
-    mapping = cmp_mappings,
+    mapping    = cmp_mappings,
     formatting = cmp_formatting,
 })
 
