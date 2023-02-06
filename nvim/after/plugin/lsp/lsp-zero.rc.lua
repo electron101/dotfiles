@@ -95,8 +95,11 @@ require "lsp_signature".setup({
     }
 })
 
-vim.keymap.set({ 'n' }, '<C-l>', function() require('lsp_signature').toggle_float_win()
+vim.keymap.set({ 'n' }, '<leader>l', function() require('lsp_signature').toggle_float_win()
 end, { silent = true, noremap = true, desc = 'toggle signature' })
+
+-- vim.keymap.set({ 'n' }, '<C-l>', function() require('lsp_signature').toggle_float_win()
+-- end, { silent = true, noremap = true, desc = 'toggle signature' })
 
 -- vim.keymap.set({ "n" }, "<Leader>l", function()
 --     vim.lsp.buf.signature_help()
