@@ -66,6 +66,7 @@ Plug 'tpope/vim-fugitive'                          " Работа с git
 Plug 'RRethy/vim-illuminate'                       " Выделение слова под курсором
 Plug 'junegunn/vim-easy-align'                     " (выравнивание по введённмоу шаблону)
 Plug 'tpope/vim-surround'                          " Обрамитель в (кавычки,',[,{ и тд)
+Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 
 " Плагины цветовых схем --------------------------
 Plug 'rafi/awesome-vim-colorschemes'               " Collection of awesome color schemes for Vim
