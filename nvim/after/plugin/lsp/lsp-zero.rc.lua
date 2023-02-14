@@ -4,28 +4,7 @@ lsp.preset('lsp-compe')
 
 lsp.ensure_installed({
     "clangd",
-    "sumneko_lua",
 })
-
--- ---
--- -- Autocompletion
--- ---
---
--- local cmp = require("cmp")
--- local cmp_select = { behavior = cmp.SelectBehavior.Select }
--- local cmp_mappings = lsp.defaults.cmp_mappings({
---     ["<C-p>"]     = cmp.mapping.select_prev_item(cmp_select),
---     ["<C-n>"]     = cmp.mapping.select_next_item(cmp_select),
---     ["<C-y>"]     = cmp.mapping.confirm({ select = true }),
---     ["<C-Space>"] = cmp.mapping.complete(),
--- })
---
---
--- local cmp_source
---
--- lsp.setup_nvim_cmp({
---     mapping = cmp_mappings,
--- })
 
 lsp.set_server_config({
     single_file_support = true,
