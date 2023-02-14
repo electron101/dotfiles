@@ -55,7 +55,8 @@ if exists("&termguicolors") && exists("&winblend")
 	set termguicolors
 endif
 
-	set background=dark
+	set background=light
+	" set background=dark
 
         " Gruvbox-material
         let g:gruvbox_material_background = 'hard'
