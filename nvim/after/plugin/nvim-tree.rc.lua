@@ -290,3 +290,16 @@ require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
         },
     },
 }) -- END_DEFAULT_OPTS
+
+
+
+-- Open At Startup
+-- https://github.com/nvim-tree/nvim-tree.lua/wiki/Open-At-Startup
+--
+local function open_nvim_tree()
+
+  -- open the tree
+  require("nvim-tree.api").tree.open()
+end
+
+vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
