@@ -1,7 +1,3 @@
--- nnoremap <leader><leader> :NvimTreeToggle<CR>
--- nnoremap <leader>r :NvimTreeRefresh<CR>
--- nnoremap <C-\> :NvimTreeFindFile<CR>
-
 -- Import & assign the map() function from the utils module
 local map = require("utils").map
 
@@ -11,14 +7,10 @@ map("n", "<C-\\>",            ":NvimTreeFindFile<CR>")
 
 require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
     auto_reload_on_write = true,
-    -- create_in_closed_folder = false,
     disable_netrw = false,
     hijack_cursor = false,
     hijack_netrw = true,
     hijack_unnamed_buffer_when_opening = false,
-    -- ignore_buffer_on_setup = false,
-    -- open_on_setup = true,
-    -- open_on_setup_file = false,
     open_on_tab = false,
     sort_by = "name",
     root_dirs = {},
@@ -27,7 +19,6 @@ require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
     reload_on_bufenter = true,
     respect_buf_cwd = true,
     on_attach = "default",
-    -- remove_keymaps = false,
     select_prompts = true,
     view = {
         centralize_selection = false,
@@ -169,7 +160,6 @@ require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
         update_root = true,
         ignore_list = {},
     },
-    -- ignore_ft_on_setup = {},
     system_open = {
         cmd = "",
         args = {},
