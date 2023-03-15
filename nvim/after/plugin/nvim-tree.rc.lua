@@ -285,8 +285,20 @@ require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
 
 -- Open At Startup
 -- https://github.com/nvim-tree/nvim-tree.lua/wiki/Open-At-Startup
---
-local function open_nvim_tree()
+
+-- Open For Directories And Change Neovim's Directory
+-- Current window:
+local function open_nvim_tree(data)
+
+  -- buffer is a directory
+  local directory = vim.fn.isdirectory(data.file) == 1
+
+  if not directory then
+    return
+  end
+
+  -- change to the directory
+  vim.cmd.cd(data.file)
 
   -- open the tree
   require("nvim-tree.api").tree.open()
