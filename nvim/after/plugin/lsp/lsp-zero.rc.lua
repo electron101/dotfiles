@@ -22,15 +22,6 @@ lsp.on_attach(function(client, bufnr)
     end
     ----------------------------------------------------------------------------
 
-    -- LSP SIGNATURE -----------------------------------------------------------
-    -- require "lsp_signature".on_attach({
-    --     bind = true, -- This is mandatory, otherwise border config won't get registered.
-    --     handler_opts = {
-    --         border = "rounded"
-    --     }
-    -- }, bufnr)
-    ----------------------------------------------------------------------------
-
     local opts = { buffer = bufnr, remap = false }
 
     vim.keymap.set("n", "<leader>e", function() vim.diagnostic.open_float()           end, opts)
@@ -67,6 +58,15 @@ lsp.setup()
 
 
 
+
+
+--===================================================================================
+-- НАСТРОЙКА ПЛАГИНОВ ---------------------------------------------------------------
+--===================================================================================
+
+---
+-- LSP SIGNATURE
+---
 require "lsp_signature".setup({
     bind = true, -- This is mandatory, otherwise border config won't get registered.
     handler_opts = {
@@ -74,15 +74,13 @@ require "lsp_signature".setup({
     }
 })
 
-vim.keymap.set({ 'n' }, '<leader>l', function() require('lsp_signature').toggle_float_win()
+vim.keymap.set({ 'n' }, '<leader>l', function()
+    require('lsp_signature').toggle_float_win()
 end, { silent = true, noremap = true, desc = 'toggle signature' })
 
--- vim.keymap.set({ 'n' }, '<C-l>', function() require('lsp_signature').toggle_float_win()
--- end, { silent = true, noremap = true, desc = 'toggle signature' })
-
--- vim.keymap.set({ "n" }, "<Leader>l", function()
---     vim.lsp.buf.signature_help()
--- end, { silent = true, noremap = true, desc = "toggle signature" })
+vim.keymap.set({ "n" }, "<Leader>k", function()
+    vim.lsp.buf.signature_help()
+end, { silent = true, noremap = true, desc = "toggle signature" })
 
 
 
