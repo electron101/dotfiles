@@ -119,7 +119,7 @@ require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
             show = {
                 file = true,
                 folder = true,
-                folder_arrow = false,
+                folder_arrow = true,
                 git = true,
                 modified = true,
             },
@@ -129,8 +129,10 @@ require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
                 bookmark = "",
                 modified = "●",
                 folder = {
-                    arrow_closed = "",
-                    arrow_open = "",
+                    -- arrow_closed = "",
+                    -- arrow_open = "",
+                    arrow_closed = "⏵",
+                    arrow_open = "⏷",
                     default = "",
                     open = "",
                     empty = "",
@@ -303,6 +305,7 @@ local function open_nvim_tree(data)
 
   -- open the tree
   require("nvim-tree.api").tree.open()
+
 end
 
 vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
