@@ -3,8 +3,8 @@ local map = require("utils").map
 
 map("n", "<leader><leader>", ":NvimTreeToggle<CR>")
 map("n", "<leader>r",        ":NvimTreeRefresh<CR>")
--- map("n", "<C-\\>",           ":NvimTreeFindFile<CR>")
-map("n", "<C-\\>",           ":NvimTreeFindFileToggle<CR>")
+map("n", "<C-\\>",           ":NvimTreeFindFile<CR>")
+-- map("n", "<C-\\>",           ":NvimTreeFindFileToggle<CR>")
 
 require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
     auto_reload_on_write = true,
