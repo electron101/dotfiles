@@ -78,7 +78,9 @@ endif
         " colorscheme github
 
         " Off
-        colorscheme off
+        " colorscheme off
+
+        colorscheme ancient
 
 "}}}
 
