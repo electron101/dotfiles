@@ -116,7 +116,7 @@ font:
     #family: monospace
     # family: Anonymous Pro 
     # family: Operator Mono 
-    # family: Cascadia Code
+    family: Cascadia Code
     # family: Victor Mono 
     # family: Consolas
     # family: Fira Code
@@ -124,12 +124,15 @@ font:
     # family: Hack
     # family: MonoLisa
     # family: Source Code Pro
-    family: JetBrains Mono
+    # family: JetBrains Mono
     # family: IBM Plex Mono
     # family: Iosevka
     # The `style` can be specified to pick a specific face.
-    style: Regular
-
+    # style: Regular
+    style: Light
+    # style: ExtraLight
+    # style: SemiLight
+#
   # Bold font face
   bold:
     # Font family
@@ -139,7 +142,7 @@ font:
     #family: monospace
     # family: Anonymous Pro 
     # family: Operator Mono 
-    # family: Cascadia Code
+    family: Cascadia Code
     # family: Victor Mono 
     # family: Consolas
     # family: Fira Code
@@ -147,11 +150,13 @@ font:
     # family: Hack
     # family: MonoLisa
     # family: Source Code Pro
-    family: JetBrains Mono
+    # family: JetBrains Mono
     # family: IBM Plex Mono
     # family: Iosevka
     # The `style` can be specified to pick a specific face.
-    style: Bold
+    # style: Bold
+    # style: SemiBold
+    style: Regular
 
   # Italic font face
   italic:
@@ -162,7 +167,7 @@ font:
     #family: monospace
     # family: Anonymous Pro 
     # family: Operator Mono 
-    # family: Cascadia Code
+    family: Cascadia Code
     # family: Victor Mono 
     # family: Consolas
     # family: Fira Code
@@ -170,7 +175,7 @@ font:
     # family: Hack
     # family: MonoLisa
     # family: Source Code Pro
-    family: JetBrains Mono
+    # family: JetBrains Mono
     # family: IBM Plex Mono
     # family: Iosevka
     # The `style` can be specified to pick a specific face.
@@ -185,7 +190,7 @@ font:
     #family: monospace
     # family: Anonymous Pro 
     # family: Operator Mono 
-    # family: Cascadia Code
+    family: Cascadia Code
     # family: Victor Mono 
     # family: Consolas
     # family: Fira Code
@@ -193,21 +198,21 @@ font:
     # family: Hack
     # family: MonoLisa
     # family: Source Code Pro
-    family: JetBrains Mono
+    # family: JetBrains Mono
     # family: IBM Plex Mono
     # family: Iosevka
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
 
   # Point size
-  size: 7.5
-  # size: 8.0
+  # size: 7.5
+  size: 8.0
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
   # spacing.
   offset:
     x: 0
-    y: 0
+    y: 1
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the
