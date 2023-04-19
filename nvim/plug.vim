@@ -90,6 +90,8 @@ Plug 'tssm/c64-vim-color-scheme'
 Plug 'sainnhe/edge'
 Plug 'habamax/vim-pire'
 Plug 'scolsen/hara'
+Plug 'jaredgorski/Mies.vim'
+Plug 'felipevolpone/mono-theme'
 
 call plug#end()
 
