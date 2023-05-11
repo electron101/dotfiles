@@ -92,6 +92,11 @@ Plug 'habamax/vim-pire'
 Plug 'scolsen/hara'
 Plug 'jaredgorski/Mies.vim'
 Plug 'felipevolpone/mono-theme'
+Plug 'EdenEast/nightfox.nvim'
+Plug 'rebelot/kanagawa.nvim'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'sainnhe/everforest'
 
 call plug#end()
 
