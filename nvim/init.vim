@@ -22,6 +22,11 @@ set smartindent
 " set printfont=JetBrains\ Mono\ 10
 " set printencoding=2byte-koi8-r
 
+if exists("g:neovide")
+    " Put anything you want to happen only in Neovide here
+    set guifont=Cascadia\ Code:h9
+endif
+
 
 "}}}
 
