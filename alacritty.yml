@@ -117,6 +117,7 @@ font:
     # family: Anonymous Pro 
     # family: Operator Mono 
     family: Cascadia Code
+    # family: OSRB
     # family: Victor Mono 
     # family: Consolas
     # family: Fira Code
@@ -143,6 +144,7 @@ font:
     # family: Anonymous Pro 
     # family: Operator Mono 
     family: Cascadia Code
+    # family: OSRB
     # family: Victor Mono 
     # family: Consolas
     # family: Fira Code
@@ -168,6 +170,7 @@ font:
     # family: Anonymous Pro 
     # family: Operator Mono 
     family: Cascadia Code
+    family: OSRB
     # family: Victor Mono 
     # family: Consolas
     # family: Fira Code
@@ -191,6 +194,7 @@ font:
     # family: Anonymous Pro 
     # family: Operator Mono 
     family: Cascadia Code
+    # family: OSRB
     # family: Victor Mono 
     # family: Consolas
     # family: Fira Code
@@ -213,8 +217,7 @@ font:
   offset:
     x: 0
     # y: 0
-    y: 1    # for Cascadia Code
-
+    y: 1 # for Cascadia Code
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the
