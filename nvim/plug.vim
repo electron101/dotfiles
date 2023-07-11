@@ -97,6 +97,7 @@ Plug 'rebelot/kanagawa.nvim'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'sainnhe/everforest'
+Plug 'rose-pine/neovim'
 
 call plug#end()
 
