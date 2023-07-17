@@ -98,6 +98,7 @@ Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'sainnhe/everforest'
 Plug 'rose-pine/neovim'
+Plug 'habamax/vim-habaurora'
 
 call plug#end()
 
