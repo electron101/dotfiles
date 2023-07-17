@@ -151,6 +151,8 @@ null_ls.setup({
         null_ls.builtins.formatting.stylua.with({
             extra_args = { "--indent-type", "Spaces", "--indent-width", "4" },
         }),
+        null_ls.builtins.formatting.csharpier,
+        null_ls.builtins.formatting.rustfmt,
     },
     on_attach = function(client, bufnr)
         null_opts.on_attach(client, bufnr)
