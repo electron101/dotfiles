@@ -99,6 +99,7 @@ Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'sainnhe/everforest'
 Plug 'rose-pine/neovim'
 Plug 'habamax/vim-habaurora'
+Plug 'pineapplegiant/spaceduck'
 
 call plug#end()
 
