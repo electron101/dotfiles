@@ -1,10 +1,10 @@
 " Allow to copy/paste between VIM instances
 "copy the current visual selection to ~/.vbuf
-vmap <Leader>y :w! ~/.vbuf<CR>
+vmap \y :w! ~/.vbuf<CR>
 "copy the current line to the buffer file if no visual selection
-nmap <Leader>y :.w! ~/.vbuf<CR>
+nmap \y :.w! ~/.vbuf<CR>
 "paste the contents of the buffer file
-nmap <Leader>p :r ~/.vbuf<CR>
+nmap \p :r ~/.vbuf<CR>
 
 " Map ctrl-movement keys to window switching
 map <C-k> <C-w>k
@@ -38,3 +38,16 @@ inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
+
+" Позволяет оставаться курсору по середине страницы при скролинге 
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
+" Позволяет оставаться курсору по середине страницы при поиске 
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Копировать в системный буфер
+nmap <leader>y "+y
+vmap <leader>y "+y
+nmap <leader>Y "+Y
