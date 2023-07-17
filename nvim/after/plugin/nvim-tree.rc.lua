@@ -1,9 +1,9 @@
 -- Import & assign the map() function from the utils module
 local map = require("utils").map
 
-map("n", "<leader><leader>", ":NvimTreeToggle<CR>")
-map("n", "<leader>r",        ":NvimTreeRefresh<CR>")
-map("n", "<C-\\>",           ":NvimTreeFindFile<CR>")
+map("n", "\\\\",       ":NvimTreeToggle<CR>") -- key is \\
+map("n", "\\r",        ":NvimTreeRefresh<CR>") -- key is \+r
+map("n", "<C-\\>",     ":NvimTreeFindFile<CR>") -- key is Ctrl+\
 -- map("n", "<C-\\>",           ":NvimTreeFindFileToggle<CR>")
 
 -- -----------------------------------------------------------------------------
