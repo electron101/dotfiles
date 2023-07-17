@@ -17,6 +17,7 @@ set smarttab
 set expandtab
 set smartindent 
 
+let mapleader=" "
 
 
 " set printfont=JetBrains\ Mono\ 10
