@@ -100,6 +100,7 @@ Plug 'sainnhe/everforest'
 Plug 'rose-pine/neovim'
 Plug 'habamax/vim-habaurora'
 Plug 'pineapplegiant/spaceduck'
+Plug 'axvr/photon.vim'
 
 call plug#end()
 
