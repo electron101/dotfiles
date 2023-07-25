@@ -100,6 +100,7 @@ Plug 'sainnhe/everforest'
 Plug 'rose-pine/neovim'
 Plug 'habamax/vim-habaurora'
 Plug 'pineapplegiant/spaceduck'
+Plug 'ayu-theme/ayu-vim'
 
 call plug#end()
 

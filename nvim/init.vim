@@ -91,6 +91,11 @@ endif
         " Dracula
         let g:dracula_italic = 0
 
+        " Ayu.vim (https://github.com/ayu-theme/ayu-vim)
+        let ayucolor="light"  " for light version of theme
+        " let ayucolor="mirage" " for mirage version of theme
+        " let ayucolor="dark"   " for dark version of theme
+
 "}}}
 
 
