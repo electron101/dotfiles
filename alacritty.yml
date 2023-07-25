@@ -128,6 +128,8 @@ font:
     # family: JetBrains Mono
     # family: IBM Plex Mono
     # family: Iosevka
+    # family: Berkeley Mono
+    # family: Berkeley Mono Variable
     # The `style` can be specified to pick a specific face.
     style: Regular
     # style: Light
@@ -155,6 +157,8 @@ font:
     # family: JetBrains Mono
     # family: IBM Plex Mono
     # family: Iosevka
+    # family: Berkeley Mono
+    # family: Berkeley Mono Variable
     # The `style` can be specified to pick a specific face.
     style: Bold
     # style: SemiBold
@@ -181,6 +185,8 @@ font:
     # family: JetBrains Mono
     # family: IBM Plex Mono
     # family: Iosevka
+    # family: Berkeley Mono
+    # family: Berkeley Mono Variable
     # The `style` can be specified to pick a specific face.
     style: Italic
 
@@ -205,6 +211,8 @@ font:
     # family: JetBrains Mono
     # family: IBM Plex Mono
     # family: Iosevka
+    # family: Berkeley Mono
+    # family: Berkeley Mono Variable
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
 
