@@ -61,8 +61,8 @@ if exists("&termguicolors") && exists("&winblend")
 	set termguicolors
 endif
 
-	" set background=light
-	set background=dark
+	set background=light
+	" set background=dark
 
         " Gruvbox-material
         let g:gruvbox_material_background = 'hard'
@@ -76,12 +76,12 @@ endif
         " colorscheme gruvbox-material
 
         " Gruvbox
-	" let g:gruvbox_bold = 0
+	let g:gruvbox_bold = 0
         " colorscheme gruvbox
 
         " GitHub
 	let g:github_colors_soft = 0
-        colorscheme github
+        " colorscheme github
 
         " Off
         " colorscheme off
@@ -95,6 +95,9 @@ endif
         let ayucolor="light"  " for light version of theme
         " let ayucolor="mirage" " for mirage version of theme
         " let ayucolor="dark"   " for dark version of theme
+
+        " GitHub Themes For Neovim https://github.com/projekt0n/github-nvim-theme
+        colorscheme github_light_high_contrast
 
 "}}}
 
