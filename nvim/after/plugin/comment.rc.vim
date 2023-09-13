@@ -3,6 +3,6 @@ require('Comment').setup()
 
 --- для С комментраии только /* */
 local ft = require('Comment.ft')
-ft.set('c', { '/*%s*/' })
+ft.set('c', { '/*%s*/', '/*%s*/' })
 
 EOF
