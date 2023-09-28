@@ -103,6 +103,7 @@ Plug 'pineapplegiant/spaceduck'
 Plug 'axvr/photon.vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'projekt0n/github-nvim-theme'
+Plug 'doums/darcula'
 
 call plug#end()
 
