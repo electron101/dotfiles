@@ -4,6 +4,7 @@ lsp.preset('lsp-compe')
 
 -- Automatic install of language servers
 -- https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/migrate-from-v2-branch.md
+require("mason").setup()
 require('mason-lspconfig').setup({
   ensure_installed = {'clangd', 'rust_analyzer'},
 })
