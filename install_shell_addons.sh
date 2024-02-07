@@ -1,48 +1,49 @@
 #!/bin/bash
+ 
+
+# TODO:
+# [-] Продумать механизм обновления (git pull, fetch ???) всех реп
+ 
+
+# DONE:
+# [+] Не ставить ohmyzsh, вместо него ставить antidote. Возможно в дальнейшем
+# вообще отказаться от системы плагинов и писать всё только в .zshrc, но пока
+# меня всё устраивает и так.
+# [+] Не ставить плагины zsh через ohmyzsh. Теперь они находятся в файле
+# zsh_plugins.txt
+# [+] Добавить вывод исполнения каждой команды, что бы было понятно что
+# происходит и что ставиться
+
+
+
+
 
 echo "[*] Start install shell addons"
 
 
-# === [ Oh My Zsh ] ===
-# Install:
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-# Plugins for Oh My Zsh:
-#
-# Download zsh-autosuggestions by
-if [ -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions" ]
+# === [ Antidote ] ===
+# https://getantidote.github.io/install
+# Install:
+if [ -d "${ZDOTDIR:-$HOME}/.antidote" ]
 then 
-	echo "[-] ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions уже сущесвует"
-else 
-	git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-fi
-#
-# Download zsh-syntax-highlighting by
-if [ -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting" ]
-then 
-	echo "[-] ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting уже сущесвует"
-else 
-	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-fi
-#
-# === [ Powerlevel10k ] ===
-# https://github.com/romkatv/powerlevel10k#installation
-#
-# В связке с Oh My Zsh:
-if [ -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" ]
-then 
-	echo "[-] ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k уже сущесвует"
+	echo "[-] ${ZDOTDIR:-$HOME}/.antidote уже сущесвует"
 else
-	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+	echo "[-] Install Antidote in ${ZDOTDIR:-$HOME}/.antidote"
+        git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-$HOME}/.antidote
 fi
+
+
 
 # === [ Vifm-colors ] ===
 if [ -d ~/.config/vifm/colors ]
 then 
 	echo "[-] ~/.config/vifm/colors уже сущесвует"
 else 
+	echo "[-] Install Vifm-colors in $HOME/.config/vifm/colors"
 	git clone https://github.com/vifm/vifm-colors ~/.config/vifm/colors
 fi
+
 
 
 # === [Tmux Plugin Manager] ====
@@ -50,8 +51,11 @@ if [ -d ~/.tmux/plugins/tpm ]
 then 
 	echo "[-] ~/.tmux/plugins/tpm уже сущесвует"
 else
+	echo "[-] Install Tmux Plugin Manager in $HOME/.tmux/plugins/tpm"
 	git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm && $HOME/.tmux/plugins/tpm/bin/install_plugins
 fi
+
+
 
 # === [Alacritty-themes CLI] ===
 # пока не могу скопировать доступ запрещён, приходиться копировать вручную
@@ -61,8 +65,12 @@ fi
 # fi
 
 
+
 # === [Vim-Plug for Neovim, Unix/Linux] ====
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+
+
 
 echo "[*] Done install shell addons"

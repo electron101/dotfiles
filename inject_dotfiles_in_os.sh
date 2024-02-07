@@ -26,6 +26,9 @@ ln -sf "$PWD"/alacritty.yml "$HOME"/.config/alacritty/alacritty.yml
 # Zsh
 ln -sf "$PWD"/zshrc "$HOME"/.zshrc
 
+# Zsh plugins file for antidote
+ln -sf "$PWD"/zsh_plugins.txt "$HOME"/.zsh_plugins.txt
+
 # P10k
 ln -sf "$PWD"/p10k.zsh "$HOME"/.p10k.zsh
 
@@ -45,4 +48,3 @@ ln -sf "$PWD"/vifmrc "$HOME"/.config/vifm/vifmrc
 
 
 echo "[*] Done inject files"
-
