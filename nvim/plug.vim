@@ -104,6 +104,7 @@ Plug 'axvr/photon.vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'projekt0n/github-nvim-theme'
 Plug 'doums/darcula'
+Plug 'gmr458/vscode_modern_theme.nvim'
 
 call plug#end()
 
