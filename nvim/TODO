@@ -17,3 +17,9 @@ export PATH=/home/nostromo/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/u
 lua, cs, clangd
 
 Возможно не стиот париться и работать как есть. 
+
+
+
+[3] NVIM TREE
+        1. Попробовать реализовать меню через (m) как в NerdTree
+        2. При открытии окна nvimtree он растягивает все буфера до равного размера, отключить эту опцию!

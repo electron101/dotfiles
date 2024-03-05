@@ -1,0 +1,7 @@
+Convert DOS/Windows line endings to Linux line endings in Vim
+:set ff=(unix || dos)
+
+How can I change a file's encoding with vim?
+:write ++enc=(utf-8 || cp1251)
+
+

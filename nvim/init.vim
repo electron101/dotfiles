@@ -10,16 +10,23 @@ set noswapfile       " Не создавать swp файлы
 " отступы в «нужных» местах.
 " https://habr.com/ru/post/64224/
 " https://linuxhandbook.com/vim-indentation-tab-spaces/
+" https://vim.fandom.com/wiki/Converting_tabs_to_spaces
 set tabstop=8
 set shiftwidth=8
 set smarttab
 set expandtab
 set smartindent 
 
+let mapleader=" "
 
 
-set printfont=JetBrains\ Mono\ 10
-set printencoding=2byte-koi8-r
+" set printfont=JetBrains\ Mono\ 10
+" set printencoding=2byte-koi8-r
+
+if exists("g:neovide")
+    " Put anything you want to happen only in Neovide here
+    set guifont=Cascadia\ Code:h9
+endif
 
 
 "}}}
@@ -42,6 +49,10 @@ set cursorline       " Подсветка текущей строки
 runtime ./plug.vim
 
 runtime ./maps.vim
+
+" LSP-Zero обязательно вызывать имеено здесь, иначе LSP не старнует при
+" запуске, а толкьо при вводе команд (:e ; :LspStart)
+runtime ./after/plugin/lsp/lsp-zero.rc.lua
 "}}}
 
 " Syntax theme "{{{
@@ -51,6 +62,7 @@ if exists("&termguicolors") && exists("&winblend")
 endif
 
 	set background=light
+	" set background=dark
 
         " Gruvbox-material
         let g:gruvbox_material_background = 'hard'
@@ -64,15 +76,28 @@ endif
         " colorscheme gruvbox-material
 
         " Gruvbox
-	" let g:gruvbox_bold = 0
+	let g:gruvbox_bold = 0
         " colorscheme gruvbox
 
         " GitHub
-	" let g:github_colors_soft = 0
+	let g:github_colors_soft = 0
         " colorscheme github
 
         " Off
-        colorscheme off
+        " colorscheme off
+
+        " colorscheme ancient
+
+        " Dracula
+        let g:dracula_italic = 0
+
+        " Ayu.vim (https://github.com/ayu-theme/ayu-vim)
+        let ayucolor="light"  " for light version of theme
+        " let ayucolor="mirage" " for mirage version of theme
+        " let ayucolor="dark"   " for dark version of theme
+
+        " GitHub Themes For Neovim https://github.com/projekt0n/github-nvim-theme
+        colorscheme github_light_high_contrast
 
 "}}}
 

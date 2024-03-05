@@ -61,8 +61,9 @@ navic.setup {
         Operator      = ' ',
         TypeParameter = ' '
     },
-    highlight = false,
-    separator = " > ",
-    depth_limit = 0,
+    highlight             = false,
+    separator             = " > ",
+    depth_limit           = 0,
     depth_limit_indicator = "..",
+    safe_output           = true
 }
